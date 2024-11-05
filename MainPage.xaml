@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="mobilna.MainPage">
+
+    <Grid BackgroundColor="LightGreen">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Label Text="Wizyta u weterynarza" 
+               Grid.Row="0"
+               FontSize="30"
+               Padding="10"
+               BackgroundColor="SeaGreen"/>
+
+        <Entry Placeholder="Imię i nazwisko właściciela..." 
+               Grid.Row="1"
+               x:Name="wlascicielEntry"/>
+
+        <Label Text="Gatunek" 
+               Grid.Row="2"/>
+
+        <ListView Grid.Row="3" 
+                  x:Name="zwierzetaListView" 
+                  ItemTapped="WybraneZwierze">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding .}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <StackLayout Orientation="Horizontal" Grid.Row="4">
+            <Label Text="Ile ma lat?"/>
+            <Label x:Name="wiek"/>
+            <Slider Minimum="0" 
+                    Maximum="20" 
+                    Value="0" 
+                    WidthRequest="250"
+                    ValueChanged="ZmienWiek"
+                    x:Name="wiekSlider"/>
+        </StackLayout>
+
+        <Entry Placeholder="Cel wizyty" 
+               Grid.Row="5"
+               x:Name="celEntry"/>
+
+        <TimePicker Grid.Row="6" 
+                    Time="16:00"
+                    x:Name="time"/>
+
+        <Button Text="OK" 
+                Grid.Row="7" 
+                Clicked="Wyswietl"/>
+
+        <Label x:Name="informacjeLabel"
+               Grid.Row="8"/>
+    </Grid>
+
+
+</ContentPage>
